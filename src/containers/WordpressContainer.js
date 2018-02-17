@@ -14,7 +14,7 @@ class WordpressContainer extends React.PureComponent {
 
   componentDidMount () {
     document.querySelector('#loader').hidden = true
-    this.props.wpAllRequested()
+    this.props.wpAllRequested({pageName: this.props.match.params.pageName})
   }
 
   componentWillReceiveProps (newProps) {
@@ -40,7 +40,7 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    wpAllRequested: () => dispatch(WordpressActions.wpAllRequested()),
+    wpAllRequested: (payload) => dispatch(WordpressActions.wpAllRequested(payload)),
     getPosts: (payload) => dispatch(WordpressActions.getPosts(payload))
   }
 }

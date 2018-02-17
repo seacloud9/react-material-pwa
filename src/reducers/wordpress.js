@@ -13,7 +13,7 @@ const { Types, Creators } = createActions({
   wpAllSucceeded: ['payload']
 })
 
-export const WpTypes = Types
+export const WordpressTypes = Types
 export default Creators
 
 /* ------------- Initial State ------------- */
@@ -28,7 +28,9 @@ export const request = (state) => {
 }
 
 export const wpAllSucceeded = (state, payload) => {
+  console.log('wpAllSucceeded')
   console.log(payload)
+  console.log('wpAllSucceeded')
   return state.merge({...payload})
 }
 

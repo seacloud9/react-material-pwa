@@ -23,12 +23,16 @@ class App extends React.Component {
   constructor (props) {
     super(props)
     this.state = props
+    console.log('App')
+    console.log(props)
+    console.log('App')
   }
   render () {
     return (
       <ConnectedRouter history={history}>
         <div>
           <Route exact path='/' component={WordpressContainer} />
+          <Route path='/:year/:month/:day/:pageName' component={WordpressContainer} />
           <Route path='/about' component={WordpressContainer} />
         </div>
       </ConnectedRouter>
