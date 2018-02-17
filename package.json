@@ -11,6 +11,7 @@
     "start2": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --hot --inline --history-api-fallback --module-bind 'json=json-loader'",
     "lint": "standard --verbose | snazzy",
     "build": "webpack  --module-bind 'json=json-loader' --progress --profile --colors",
+    "build2": "webpack  --module-bind 'json=json-loader' -p",
     "clean": "rm -rf node_modules/ && npm cache clean --force && npm install",
     "clean2": "rm -rf node_modules/ && npm cache clean --force",
     "test": "react-scripts test --env=jsdom",
