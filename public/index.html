@@ -8,12 +8,12 @@
   <link rel="icon" type="image/png" sizes="32x32" href="images/icon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="images/icon/favicon-16x16.png">
   <meta charset="utf-8"/>
-  <link rel="manifest" href="manifest.json">
-  <link rel="mask-icon" href="images/icon/safari-pinned-tab.svg" color="#d8f5e4">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="mask-icon" href="/images/icon/safari-pinned-tab.svg" color="#d8f5e4">
   <meta name="theme-color" content="#eef20e">
   <meta name="mobile-web-app-capable" content="yes">
   <link href="https://fonts.googleapis.com/css?family=Bowlby+One+SC" rel="stylesheet"> 
-  <link rel="stylesheet" type="text/css" href="css/index.css">
+  <link rel="stylesheet" type="text/css" href="/css/index.css">
   <title>:.::react materail pwa:.:::.::</title>
 </head>
 <body>
@@ -52,7 +52,7 @@
     const shouldRegister = window.location.protocol === 'https:' || window.location.hostname === 'localhost';
     if ('serviceWorker' in navigator && shouldRegister) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('service-worker.js').then(function(registration) {
+        navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
           // Registration was successful
           console.log('ServiceWorker registration successful with scope: ', registration.scope);
         }, function(err) {
@@ -66,7 +66,7 @@
       console.log('service worker is not supported');
     }
   </script>
-  <script type="text/javascript" src="js/app.js" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="/js/app.js" crossorigin="anonymous"></script>
   <noscript>For real enable your javascript...</noscript>
 </body>
 </html>
