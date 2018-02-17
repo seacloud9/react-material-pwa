@@ -6,18 +6,15 @@ import { connect } from 'react-redux'
 import WordpressActions from '../reducers/wordpress'
 import WPCard from '../components/WPCard'
 
-
 class WordpressContainer extends React.PureComponent {
   constructor (props) {
     super(props)
     this.state = props
-    console.log(props)
   }
-
-
 
   componentDidMount () {
     document.querySelector('#loader').hidden = true
+    this.props.wpAllRequested()
   }
 
   componentWillReceiveProps (newProps) {
@@ -28,10 +25,9 @@ class WordpressContainer extends React.PureComponent {
 
   }
 
-
   render () {
     return (
-      <div style={{flex:1, flexDirection:'row', justifyContent:'center', alignContent:'center'}}>
+      <div style={{flex: 1, flexDirection: 'row', justifyContent: 'center', alignContent: 'center'}}>
         <WPCard />
       </div>
     )
@@ -39,7 +35,6 @@ class WordpressContainer extends React.PureComponent {
 }
 
 const mapStateToProps = (state, props) => {
-  console.log(state)
   return ({
     posts: state.wp.posts
   })
@@ -47,9 +42,9 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    wpAllRequested: () => dispatch(WordpressActions.wpAllRequested()),
     getPosts: (payload) => dispatch(WordpressActions.getPosts(payload))
   }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(WordpressContainer)
-
