@@ -7,17 +7,18 @@ import Typography from 'material-ui/Typography'
 
 const styles = {
   card: {
-    maxWidth: 345
+    width: '100%',
+    minHeight:300,
+    flex:1
   },
   media: {
-    height: 200
+    width: '100%'
   }
 }
 
 function WPCard (props) {
   const { classes } = props
   return (
-    <div>
       <Card className={classes.card}>
         <CardMedia
           className={classes.media}
@@ -42,7 +43,6 @@ function WPCard (props) {
           </Button>
         </CardActions>
       </Card>
-    </div>
   )
 }
 

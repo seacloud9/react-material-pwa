@@ -4,7 +4,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import WordpressActions from '../reducers/wordpress'
-import WPCard from '../components/WPCard'
+import GridLayout from '../components/GridLayout'
 
 class WordpressContainer extends React.PureComponent {
   constructor (props) {
@@ -27,9 +27,7 @@ class WordpressContainer extends React.PureComponent {
 
   render () {
     return (
-      <div style={{flex: 1, flexDirection: 'row', justifyContent: 'center', alignContent: 'center'}}>
-        <WPCard />
-      </div>
+      <GridLayout />
     )
   }
 }
