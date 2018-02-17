@@ -1,0 +1,106 @@
+{
+  "name": "react-material-pwa",
+  "displayName": "react material pwa",
+  "version": "1.0.0",
+  "description": "react material pwa",
+  "main": "index.js",
+  "scripts": {
+    "fixcode": "standard --fix",
+    "simple": "cd public && python -m SimpleHTTPServer 8080",
+    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --history-api-fallback --module-bind 'json=json-loader'",
+    "start2": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --hot --inline --history-api-fallback --module-bind 'json=json-loader'",
+    "lint": "standard --verbose | snazzy",
+    "build": "webpack  --module-bind 'json=json-loader' --progress --profile --colors",
+    "clean": "rm -rf node_modules/ && npm cache clean --force && npm install",
+    "clean2": "rm -rf node_modules/ && npm cache clean --force",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "publish": "npm run build && gh-pages -d build",
+    "publishApp": "cp public/js/app.js www/js/ && cp public/index.html www/index.html"
+  },
+  "author": "Brendon Smith brendonsmith@seacloud9.org",
+  "license": "MIT",
+  "dependencies": {
+    "@tweenjs/tween.js": "^17.1.0",
+    "apisauce": "^0.14.0",
+    "babel-polyfill": "^6.3.14",
+    "babel-preset-stage-2": "^6.24.1",
+    "color": "^2.0.0",
+    "history": "^4.7.2",
+    "material-ui": "^1.0.0-beta.34",
+    "material-ui-icons": "^1.0.0-beta.17",
+    "prop-types": "^15.6.0",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "react-redux": "^5.0.5",
+    "react-router-redux": "^5.0.0-alpha.9",
+    "react-scripts": "0.9.5",
+    "redux": "^3.7.1",
+    "redux-saga": "^0.15.4",
+    "reduxsauce": "^0.5.0",
+    "reselect": "^3.0.1",
+    "scriptjs": "^2.5.8",
+    "seamless-immutable": "^7.1.2",
+    "snazzy": "^7.0.0",
+    "standard": "^10.0.2",
+    "webpack-assets-manifest": "^1.0.0",
+    "webpack-strip": "^0.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seacloud9/ethereal.git"
+  },
+  "keywords": [
+    "react",
+    "material",
+    "boilerplate",
+    "redux",
+    "redux-saga",
+    "apisauce"
+  ],
+  "bugs": {
+    "url": "https://github.com/seacloud9/issues"
+  },
+  "homepage": "https://github.com/seacloud9/#readme",
+  "devDependencies": {
+    "babel-core": "^6.21.0",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.16.0",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^14.0.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^3.0.2",
+    "eslint-plugin-react": "^6.9.0",
+    "exports-loader": "^0.6.4",
+    "file-loader": "^0.9.0",
+    "gh-pages": "^0.12.0",
+    "imports-loader": "^0.7.1",
+    "json-loader": "^0.5.4",
+    "react-hot-loader": "^3.1.3",
+    "remote-redux-devtools": "^0.5.12",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^1.16.2"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "ignore": [
+      "/doc",
+      ".idea",
+      "/public",
+      "/node_modules",
+      "/js",
+      "webpack.config.js"
+    ],
+    "globals": [
+      "describe",
+      "it",
+      "fetch",
+      "navigator",
+      "__DEV__",
+      "XMLHttpRequest",
+      "FormData",
+      "React$Element"
+    ]
+  }
+}
