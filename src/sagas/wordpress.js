@@ -4,15 +4,9 @@ import actions from '../reducers/wordpress'
 
 export function * wpFetchAll (payload) {
   try {
-    console.log('wpFetchAll')
-    console.log(payload)
-    console.log('wpFetchAll')
     const apiCreateAll = createApi.getAll(payload)
     const data = yield call(apiCreateAll._getAllOptions)
-    console.log('wpFetchAll')
-    console.log(data)
-    console.log('wpFetchAll')
-    yield put(actions.wpAllSucceeded({payload: data}))
+    yield put(actions.wpAllSucceeded(data))
   } catch (e) {
     yield put(actions.failure({error: e}))
   }

@@ -9752,19 +9752,18 @@ var request = exports.request = function request(state) {
   return state.merge({ fetching: true, error: null });
 };
 
-var wpAllSucceeded = exports.wpAllSucceeded = function wpAllSucceeded(state, payload) {
-  console.log('wpAllSucceeded');
-  console.log(payload);
-  console.log('wpAllSucceeded');
-  return state.merge(_extends({}, payload));
+var wpAllSucceeded = exports.wpAllSucceeded = function wpAllSucceeded(state, _ref) {
+  var payload = _ref.payload;
+
+  return state.merge({ posts: payload.data });
 };
 
 var getPosts = exports.getPosts = function getPosts(state, payload) {
   return state.merge(_extends({}, payload));
 };
 
-var failure = exports.failure = function failure(state, _ref) {
-  var error = _ref.error;
+var failure = exports.failure = function failure(state, _ref2) {
+  var error = _ref2.error;
 
   return state.merge({ fetching: false, error: error });
 };
@@ -30152,9 +30151,6 @@ var App = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
     _this.state = props;
-    console.log('App');
-    console.log(props);
-    console.log('App');
     return _this;
   }
 
@@ -35577,11 +35573,12 @@ var WordpressContainer = function (_React$PureComponent) {
   }, {
     key: 'render',
     value: function render() {
+      console.log(this.state.posts);
       return _react2.default.createElement(
         'div',
         null,
         _react2.default.createElement(_MaterialNavBar2.default, null),
-        _react2.default.createElement(_GridLayout2.default, null)
+        _react2.default.createElement(_GridLayout2.default, { posts: this.state.posts })
       );
     }
   }]);
@@ -47251,6 +47248,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
@@ -47271,7 +47270,14 @@ var _WPCard2 = _interopRequireDefault(_WPCard);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 // import Paper from 'material-ui/Paper'
+
+
 var styles = function styles(theme) {
   return {
     root: {
@@ -47285,53 +47291,68 @@ var styles = function styles(theme) {
   };
 };
 
-function GridLayout(props) {
-  var classes = props.classes;
+var GridLayout = function (_React$Component) {
+  _inherits(GridLayout, _React$Component);
 
+  function GridLayout(props) {
+    _classCallCheck(this, GridLayout);
 
-  return _react2.default.createElement(
-    'div',
-    { className: classes.root },
-    _react2.default.createElement(
-      _Grid2.default,
-      { container: true, spacing: 24 },
-      _react2.default.createElement(
-        _Grid2.default,
-        { item: true, xs: true },
-        _react2.default.createElement(_WPCard2.default, { className: classes.paper })
-      ),
-      _react2.default.createElement(
-        _Grid2.default,
-        { item: true, xs: true },
-        _react2.default.createElement(_WPCard2.default, { className: classes.paper })
-      ),
-      _react2.default.createElement(
-        _Grid2.default,
-        { item: true, xs: true },
-        _react2.default.createElement(_WPCard2.default, { className: classes.paper })
-      )
-    ),
-    _react2.default.createElement(
-      _Grid2.default,
-      { container: true, spacing: 24 },
-      _react2.default.createElement(
-        _Grid2.default,
-        { item: true, xs: true },
-        _react2.default.createElement(_WPCard2.default, { className: classes.paper })
-      ),
-      _react2.default.createElement(
-        _Grid2.default,
-        { item: true, xs: true },
-        _react2.default.createElement(_WPCard2.default, { className: classes.paper })
-      ),
-      _react2.default.createElement(
-        _Grid2.default,
-        { item: true, xs: true },
-        _react2.default.createElement(_WPCard2.default, { className: classes.paper })
-      )
-    )
-  );
-}
+    var _this = _possibleConstructorReturn(this, (GridLayout.__proto__ || Object.getPrototypeOf(GridLayout)).call(this, props));
+
+    console.log(props);
+    return _this;
+  }
+
+  _createClass(GridLayout, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: this.props.classes.root },
+        _react2.default.createElement(
+          _Grid2.default,
+          { container: true, spacing: 24 },
+          _react2.default.createElement(
+            _Grid2.default,
+            { item: true, xs: true },
+            _react2.default.createElement(_WPCard2.default, { className: this.props.classes.paper })
+          ),
+          _react2.default.createElement(
+            _Grid2.default,
+            { item: true, xs: true },
+            _react2.default.createElement(_WPCard2.default, { className: this.props.classes.paper })
+          ),
+          _react2.default.createElement(
+            _Grid2.default,
+            { item: true, xs: true },
+            _react2.default.createElement(_WPCard2.default, { className: this.props.classes.paper })
+          )
+        ),
+        _react2.default.createElement(
+          _Grid2.default,
+          { container: true, spacing: 24 },
+          _react2.default.createElement(
+            _Grid2.default,
+            { item: true, xs: true },
+            _react2.default.createElement(_WPCard2.default, { className: this.props.classes.paper })
+          ),
+          _react2.default.createElement(
+            _Grid2.default,
+            { item: true, xs: true },
+            _react2.default.createElement(_WPCard2.default, { className: this.props.classes.paper })
+          ),
+          _react2.default.createElement(
+            _Grid2.default,
+            { item: true, xs: true },
+            _react2.default.createElement(_WPCard2.default, { className: this.props.classes.paper })
+          )
+        )
+      );
+    }
+  }]);
+
+  return GridLayout;
+}(_react2.default.Component);
 
 GridLayout.propTypes = {
   classes: _propTypes2.default.object.isRequired
@@ -74475,39 +74496,31 @@ function wpFetchAll(payload) {
       switch (_context.prev = _context.next) {
         case 0:
           _context.prev = 0;
-
-          console.log('wpFetchAll');
-          console.log(payload);
-          console.log('wpFetchAll');
           apiCreateAll = _api2.default.getAll(payload);
-          _context.next = 7;
+          _context.next = 4;
           return (0, _effects.call)(apiCreateAll._getAllOptions);
 
-        case 7:
+        case 4:
           data = _context.sent;
+          _context.next = 7;
+          return (0, _effects.put)(_wordpress2.default.wpAllSucceeded(data));
 
-          console.log('wpFetchAll');
-          console.log(data);
-          console.log('wpFetchAll');
+        case 7:
           _context.next = 13;
-          return (0, _effects.put)(_wordpress2.default.wpAllSucceeded({ payload: data }));
-
-        case 13:
-          _context.next = 19;
           break;
 
-        case 15:
-          _context.prev = 15;
+        case 9:
+          _context.prev = 9;
           _context.t0 = _context['catch'](0);
-          _context.next = 19;
+          _context.next = 13;
           return (0, _effects.put)(_wordpress2.default.failure({ error: _context.t0 }));
 
-        case 19:
+        case 13:
         case 'end':
           return _context.stop();
       }
     }
-  }, _marked, this, [[0, 15]]);
+  }, _marked, this, [[0, 9]]);
 }
 
 ;(function register() {
@@ -74550,9 +74563,6 @@ var icreateApi = (0, _apisauce.create)({
 var getAll = function getAll() {
   var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { pageName: null };
 
-  console.log('getAll');
-  console.log(data);
-  console.log('getAll');
   var _getAllOptions = function _getAllOptions() {
     return icreateApi.get(data.payload && data.payload.pageName ? 'posts?slug=' + data.payload.pageName : 'posts', null, icreateApi.headers);
   };

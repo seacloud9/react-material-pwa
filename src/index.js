@@ -23,9 +23,6 @@ class App extends React.Component {
   constructor (props) {
     super(props)
     this.state = props
-    console.log('App')
-    console.log(props)
-    console.log('App')
   }
   render () {
     return (

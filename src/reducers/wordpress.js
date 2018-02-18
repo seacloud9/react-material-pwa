@@ -27,11 +27,8 @@ export const request = (state) => {
   return state.merge({fetching: true, error: null})
 }
 
-export const wpAllSucceeded = (state, payload) => {
-  console.log('wpAllSucceeded')
-  console.log(payload)
-  console.log('wpAllSucceeded')
-  return state.merge({...payload})
+export const wpAllSucceeded = (state, {payload}) => {
+  return state.merge({posts: payload.data})
 }
 
 export const getPosts = (state, payload) => {

@@ -16,35 +16,40 @@ const styles = theme => ({
   }
 })
 
-function GridLayout (props) {
-  const { classes } = props
+class GridLayout extends React.Component {
+  constructor (props) {
+    super(props)
+    console.log(props)
+  }
 
-  return (
-    <div className={classes.root}>
-      <Grid container spacing={24}>
-        <Grid item xs>
-          <WPCard className={classes.paper} />
+  render () {
+    return (
+      <div className={this.props.classes.root}>
+        <Grid container spacing={24}>
+          <Grid item xs>
+            <WPCard className={this.props.classes.paper} />
+          </Grid>
+          <Grid item xs>
+            <WPCard className={this.props.classes.paper} />
+          </Grid>
+          <Grid item xs>
+            <WPCard className={this.props.classes.paper} />
+          </Grid>
         </Grid>
-        <Grid item xs>
-          <WPCard className={classes.paper} />
+        <Grid container spacing={24}>
+          <Grid item xs>
+            <WPCard className={this.props.classes.paper} />
+          </Grid>
+          <Grid item xs>
+            <WPCard className={this.props.classes.paper} />
+          </Grid>
+          <Grid item xs>
+            <WPCard className={this.props.classes.paper} />
+          </Grid>
         </Grid>
-        <Grid item xs>
-          <WPCard className={classes.paper} />
-        </Grid>
-      </Grid>
-      <Grid container spacing={24}>
-        <Grid item xs>
-          <WPCard className={classes.paper} />
-        </Grid>
-        <Grid item xs>
-          <WPCard className={classes.paper} />
-        </Grid>
-        <Grid item xs>
-          <WPCard className={classes.paper} />
-        </Grid>
-      </Grid>
-    </div>
-  )
+      </div>
+    )
+  }
 }
 
 GridLayout.propTypes = {

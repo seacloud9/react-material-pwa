@@ -7,9 +7,6 @@ const icreateApi = create({
 })
 
 const getAll = (data = {pageName: null}) => {
-  console.log('getAll')
-  console.log(data)
-  console.log('getAll')
   const _getAllOptions = () => icreateApi.get(((data.payload && data.payload.pageName) ? `posts?slug=${data.payload.pageName}` : 'posts'), null, icreateApi.headers)
   return {
     _getAllOptions

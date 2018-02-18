@@ -23,16 +23,16 @@ const styles = {
     marginRight: 20
   },
   list: {
-    width: 250,
+    width: 250
   },
   listFull: {
-    width: 'auto',
+    width: 'auto'
   }
 }
 
 class MaterialNavBar extends React.Component {
   // { classes } = props
-  constructor(props){
+  constructor (props) {
     super(props)
     this.state = {
       top: false,
@@ -68,8 +68,8 @@ class MaterialNavBar extends React.Component {
         </Drawer>
         <AppBar position='static'>
           <Toolbar>
-            <IconButton className={this.props.classes.menuButton} color='inherit' aria-label='Menu'  onClick={this.toggleDrawer('left', true)}>
-            <MenuIcon />
+            <IconButton className={this.props.classes.menuButton} color='inherit' aria-label='Menu' onClick={this.toggleDrawer('left', true)}>
+              <MenuIcon />
             </IconButton>
             <Typography variant='title' color='inherit' className={this.props.classes.flex}>
               React Material PWA
