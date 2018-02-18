@@ -63601,7 +63601,10 @@ var GridLayout = function (_React$Component) {
         };
         wpCardsArr.push(_react2.default.createElement(
           _Grid2.default,
-          { item: true, xs: true },
+          { item: true, xs: true, style: {
+              flexDirection: 'column',
+              display: 'flex'
+            } },
           _react2.default.createElement(_WPCard2.default, { className: _this.props.classes.paper, contentObj: contentObj })
         ));
       }, _this.state.posts);
@@ -63643,8 +63646,6 @@ var GridLayout = function (_React$Component) {
         'div',
         { className: this.props.classes.root },
         this.grid && this.grid.map(function (item, index) {
-          //console.log(item)
-          //console.log(index)
           return _react2.default.createElement(
             _Grid2.default,
             { container: true, key: index, spacing: 24 },
@@ -78783,7 +78784,10 @@ function WPCard(props) {
 
   return _react2.default.createElement(
     _Card2.default,
-    { className: classes.card },
+    { className: classes.card, style: {
+        flexDirection: 'column',
+        display: 'flex'
+      } },
     _react2.default.createElement(_Card.CardMedia, {
       className: classes.media,
       image: contentObj.image,
@@ -78802,7 +78806,11 @@ function WPCard(props) {
     ),
     _react2.default.createElement(
       _Card.CardActions,
-      null,
+      { style: {
+          justifyContent: 'flex-end',
+          flex: 1,
+          alignItems: 'flex-end'
+        } },
       _react2.default.createElement(
         _Button2.default,
         { size: 'small', color: 'primary' },

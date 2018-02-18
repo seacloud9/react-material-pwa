@@ -20,7 +20,10 @@ const styles = {
 function WPCard (props) {
   const { classes, contentObj } = props
   return (
-    <Card className={classes.card}>
+    <Card className={classes.card} style={{
+      flexDirection: 'column',
+      display: 'flex'
+    }}>
       <CardMedia
         className={classes.media}
         image={contentObj.image}
@@ -29,11 +32,15 @@ function WPCard (props) {
         />
       <CardContent>
         <Typography variant='headline' component='h2'>
-        {contentObj.title}
-          </Typography>
-        <Typography component='p' dangerouslySetInnerHTML={{__html:contentObj.body}} />
+          {contentObj.title}
+        </Typography>
+        <Typography component='p' dangerouslySetInnerHTML={{__html: contentObj.body}} />
       </CardContent>
-      <CardActions>
+      <CardActions style={{
+        justifyContent: 'flex-end',
+        flex: 1,
+        alignItems: 'flex-end'
+      }}>
         <Button size='small' color='primary'>
             Share
           </Button>
