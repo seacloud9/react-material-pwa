@@ -30,7 +30,7 @@ class WordpressContainer extends React.PureComponent {
     console.log(this.state.posts)
     return (
       <div>
-        <MaterialNavBar />
+        <MaterialNavBar  />
         <GridLayout posts={this.state.posts} />
       </div>
     )

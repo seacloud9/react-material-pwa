@@ -66,13 +66,13 @@ class MaterialNavBar extends React.Component {
             {navList}
           </div>
         </Drawer>
-        <AppBar position='static'>
+        <AppBar position='fixed'>
           <Toolbar>
             <IconButton className={this.props.classes.menuButton} color='inherit' aria-label='Menu' onClick={this.toggleDrawer('left', true)}>
               <MenuIcon />
             </IconButton>
             <Typography variant='title' color='inherit' className={this.props.classes.flex}>
-              React Material PWA
+              React PWA
             </Typography>
             <Button color='inherit'>site</Button>
           </Toolbar>

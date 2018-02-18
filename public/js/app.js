@@ -91843,7 +91843,7 @@ var MaterialNavBar = function (_React$Component) {
         ),
         _react2.default.createElement(
           _AppBar2.default,
-          { position: 'static' },
+          { position: 'fixed' },
           _react2.default.createElement(
             _Toolbar2.default,
             null,
@@ -91855,7 +91855,7 @@ var MaterialNavBar = function (_React$Component) {
             _react2.default.createElement(
               _Typography2.default,
               { variant: 'title', color: 'inherit', className: this.props.classes.flex },
-              'React Material PWA'
+              'React PWA'
             ),
             _react2.default.createElement(
               _Button2.default,
