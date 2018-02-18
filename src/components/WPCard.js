@@ -18,30 +18,26 @@ const styles = {
 }
 
 function WPCard (props) {
-  const { classes } = props
-
+  const { classes, contentObj } = props
   return (
     <Card className={classes.card}>
       <CardMedia
         className={classes.media}
-        image={'/images/placeholder/sc9Img1.jpg'}
-        title='Contemplative Reptile'
+        image={contentObj.image}
+        title={contentObj.title}
 
         />
       <CardContent>
         <Typography variant='headline' component='h2'>
-            Lizard
+        {contentObj.title}
           </Typography>
-        <Typography component='p'>
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-            across all continents except Antarctica
-          </Typography>
+        <Typography component='p' dangerouslySetInnerHTML={{__html:contentObj.body}} />
       </CardContent>
       <CardActions>
         <Button size='small' color='primary'>
             Share
           </Button>
-        <Button size='small' color='primary'>
+        <Button size='small' color='primary' data={contentObj.link}>
             Learn More
           </Button>
       </CardActions>
@@ -50,7 +46,8 @@ function WPCard (props) {
 }
 
 WPCard.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  contentObj: PropTypes.object.isRequired
 }
 
 export default withStyles(styles)(WPCard)
