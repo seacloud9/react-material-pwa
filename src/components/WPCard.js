@@ -12,18 +12,21 @@ const styles = {
     flex: 1
   },
   media: {
-    width: '100%'
+    width: '100%',
+    height: 300
   }
 }
 
 function WPCard (props) {
   const { classes } = props
+
   return (
     <Card className={classes.card}>
       <CardMedia
         className={classes.media}
-        image='/static/images/cards/contemplative-reptile.jpg'
+        image={'/images/placeholder/sc9Img1.jpg'}
         title='Contemplative Reptile'
+
         />
       <CardContent>
         <Typography variant='headline' component='h2'>

@@ -5,6 +5,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import WordpressActions from '../reducers/wordpress'
 import GridLayout from '../components/GridLayout'
+import MaterialNavBar from '../components/MaterialNavBar'
 
 class WordpressContainer extends React.PureComponent {
   constructor (props) {
@@ -27,7 +28,10 @@ class WordpressContainer extends React.PureComponent {
 
   render () {
     return (
-      <GridLayout />
+      <div>
+        <MaterialNavBar />
+        <GridLayout />
+      </div>
     )
   }
 }

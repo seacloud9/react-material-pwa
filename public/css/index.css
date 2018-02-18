@@ -48,10 +48,6 @@ h1{
     margin:0;
     text-align:center;
   }
-  svg{
-    position:relative;
-    top:-40px;
-  }
 
 /* Portrait layout (default) */
 .app {

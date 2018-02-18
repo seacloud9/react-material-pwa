@@ -36,7 +36,7 @@ function GridLayout (props) {
         <Grid item xs>
           <WPCard className={classes.paper} />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs>
           <WPCard className={classes.paper} />
         </Grid>
         <Grid item xs>
