@@ -1,5 +1,6 @@
 import {create} from 'apisauce'
 
+const setSize = 12
 // define the api
 const icreateApi = create({
   baseURL: 'http://i-create.org/wp-json/wp/v2/',
@@ -7,12 +8,28 @@ const icreateApi = create({
 })
 
 const getAll = (data = {pageName: null}) => {
-  const _getAllOptions = () => icreateApi.get(((data.payload && data.payload.pageName) ? `posts?slug=${data.payload.pageName}` : 'posts?per_page=12'), null, icreateApi.headers)
+  const _getAll = () => icreateApi.get(`posts?per_page=${setSize}`, null, icreateApi.headers)
   return {
-    _getAllOptions
+    _getAll
+  }
+}
+
+const getSlug = (data = {pageName: null}) => {
+  const _getSlug = () => icreateApi.get(`posts?slug=${data.payload.pageName}`, null, icreateApi.headers)
+  return {
+    _getSlug
+  }
+}
+
+const getPage = (data = {pageNumber: 0}) => {
+  const _getPage = () => icreateApi.get(`posts?page=${data.payload.pageNumber}&per_page=${setSize}`, null, icreateApi.headers)
+  return {
+    _getPage
   }
 }
 
 export default {
-  getAll
+  getAll,
+  getSlug,
+  getPage
 }

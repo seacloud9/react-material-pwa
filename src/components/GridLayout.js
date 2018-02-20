@@ -22,7 +22,6 @@ class GridLayout extends React.Component {
     super(props)
     this.state = props
     this.grid = null
-    console.log(props)
   }
 
   componentWillReceiveProps (newProps) {
