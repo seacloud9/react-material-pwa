@@ -22,6 +22,7 @@ export default Creators
 
 /* ------------- Initial State ------------- */
 export const INITIAL_STATE = Immutable({
+  fetching: false,
   index: 0,
   posts: [],
   post: null
@@ -34,20 +35,22 @@ export const request = (state) => {
 }
 
 export const wpPageSucceeded = (state, {payload}) => {
+  console.log('wpPageSucceeded')
   const newDataArray = state.posts.concat(payload.data)
-  return state.merge({posts: newDataArray})
+  return state.merge({posts: newDataArray, fetching: false})
 }
 
 export const wpSlugSucceeded = (state, {payload}) => {
-  return state.merge({post: payload.data[0]})
+  return state.merge({post: payload.data[0], fetching: false})
 }
 
 export const wpAllSucceeded = (state, {payload}) => {
-  return state.merge({posts: payload.data})
+  console.log(payload.data)
+  return state.merge({posts: payload.data, fetching: false})
 }
 
 export const getPosts = (state, payload) => {
-  return state.merge({...payload})
+  return state.merge({...payload, fetching: false})
 }
 
 export const failure = (state, { error }) => {

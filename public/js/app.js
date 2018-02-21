@@ -11857,6 +11857,7 @@ exports.default = Creators;
 /* ------------- Initial State ------------- */
 
 var INITIAL_STATE = exports.INITIAL_STATE = (0, _seamlessImmutable2.default)({
+  fetching: false,
   index: 0,
   posts: [],
   post: null
@@ -11871,24 +11872,26 @@ var request = exports.request = function request(state) {
 var wpPageSucceeded = exports.wpPageSucceeded = function wpPageSucceeded(state, _ref) {
   var payload = _ref.payload;
 
+  console.log('wpPageSucceeded');
   var newDataArray = state.posts.concat(payload.data);
-  return state.merge({ posts: newDataArray });
+  return state.merge({ posts: newDataArray, fetching: false });
 };
 
 var wpSlugSucceeded = exports.wpSlugSucceeded = function wpSlugSucceeded(state, _ref2) {
   var payload = _ref2.payload;
 
-  return state.merge({ post: payload.data[0] });
+  return state.merge({ post: payload.data[0], fetching: false });
 };
 
 var wpAllSucceeded = exports.wpAllSucceeded = function wpAllSucceeded(state, _ref3) {
   var payload = _ref3.payload;
 
-  return state.merge({ posts: payload.data });
+  console.log(payload.data);
+  return state.merge({ posts: payload.data, fetching: false });
 };
 
 var getPosts = exports.getPosts = function getPosts(state, payload) {
-  return state.merge(_extends({}, payload));
+  return state.merge(_extends({}, payload, { fetching: false }));
 };
 
 var failure = exports.failure = function failure(state, _ref4) {
@@ -44153,6 +44156,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 */
 
 
+// import uuidv4 from 'uuid/v4'
+
 var WordpressContainer = function (_React$PureComponent) {
   _inherits(WordpressContainer, _React$PureComponent);
 
@@ -44172,6 +44177,9 @@ var WordpressContainer = function (_React$PureComponent) {
       document.querySelector('#loader').hidden = true;
       if (this.props.match.params.pageName) {
         this.props.wpSlugRequested({ pageName: this.props.match.params.pageName });
+      } else {
+        // you have to have at least one post
+        if (!this.state.posts.length) this.props.wpAllRequested();
       }
     }
   }, {
@@ -44197,13 +44205,15 @@ var WordpressContainer = function (_React$PureComponent) {
             initialLoad: false,
             pageStart: this.page,
             loadMore: function loadMore() {
-              _this2.page++;
-              _this2.props.wpPageRequested({ pageNumber: _this2.page });
+              if (!_this2.state.fetching) {
+                ++_this2.page;
+                _this2.props.wpPageRequested({ pageNumber: _this2.page });
+              }
             },
             hasMore: true,
             loader: _react2.default.createElement(
               'div',
-              { className: 'loader' },
+              { key: 1, className: 'loader' },
               'Loading ...'
             )
           },
@@ -44218,7 +44228,9 @@ var WordpressContainer = function (_React$PureComponent) {
 
 var mapStateToProps = function mapStateToProps(state, props) {
   return {
-    posts: state.wp.posts
+    fetching: state.wp.fetching,
+    posts: state.wp.posts,
+    post: state.wp.post
   };
 };
 
@@ -63616,13 +63628,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-// import Paper from 'material-ui/Paper'
-
 
 var styles = function styles(theme) {
   return {
     root: {
-      flexGrow: 1
+      flexGrow: 1,
+      padding: 10,
+      marginTop: 70
     },
     paper: {
       padding: theme.spacing.unit * 2,

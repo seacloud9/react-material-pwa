@@ -1,14 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from 'material-ui/styles'
-// import Paper from 'material-ui/Paper'
 import * as R from 'ramda'
 import Grid from 'material-ui/Grid'
 import WPCard from './WPCard'
 
 const styles = theme => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    padding: 10,
+    marginTop: 70
   },
   paper: {
     padding: theme.spacing.unit * 2,

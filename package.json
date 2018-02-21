@@ -49,6 +49,7 @@
     "seamless-immutable": "^7.1.2",
     "snazzy": "^7.0.0",
     "standard": "^10.0.2",
+    "uuid": "^3.2.1",
     "webpack-assets-manifest": "^1.0.0",
     "webpack-strip": "^0.1.0"
   },

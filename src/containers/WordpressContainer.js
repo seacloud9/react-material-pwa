@@ -7,6 +7,7 @@ import WordpressActions from '../reducers/wordpress'
 import GridLayout from '../components/GridLayout'
 import MaterialNavBar from '../components/MaterialNavBar'
 import InfiniteScroll from 'react-infinite-scroller'
+// import uuidv4 from 'uuid/v4'
 
 class WordpressContainer extends React.PureComponent {
   constructor (props) {
@@ -19,6 +20,9 @@ class WordpressContainer extends React.PureComponent {
     document.querySelector('#loader').hidden = true
     if (this.props.match.params.pageName) {
       this.props.wpSlugRequested({pageName: this.props.match.params.pageName})
+    } else {
+      // you have to have at least one post
+      if (!this.state.posts.length) this.props.wpAllRequested()
     }
   }
 
@@ -38,11 +42,13 @@ class WordpressContainer extends React.PureComponent {
           initialLoad={false}
           pageStart={this.page}
           loadMore={() => {
-            this.page++
-            this.props.wpPageRequested({pageNumber: this.page})
+            if (!this.state.fetching) {
+              ++this.page
+              this.props.wpPageRequested({pageNumber: this.page})
+            }
           }}
           hasMore
-          loader={<div className='loader'>Loading ...</div>}
+          loader={<div key={1} className='loader'>Loading ...</div>}
         >
           <GridLayout posts={this.state.posts} key={0} />
         </InfiniteScroll>
@@ -53,7 +59,9 @@ class WordpressContainer extends React.PureComponent {
 
 const mapStateToProps = (state, props) => {
   return ({
-    posts: state.wp.posts
+    fetching: state.wp.fetching,
+    posts: state.wp.posts,
+    post: state.wp.post
   })
 }
 
