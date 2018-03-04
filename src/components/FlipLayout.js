@@ -62,7 +62,7 @@ class FlipLayout extends React.Component {
   render () {
     return (
       <div className={this.props.classes.root}>
-        <FlipPage responsive orientation='vertical' loopForever ref={(component) => { this.flipPage = component }} >
+        <FlipPage onPageChange={(index) => (index % 12 === 0) ? this.props.loadMore() : null} responsive orientation='vertical' ref={(component) => { this.flipPage = component }} >
           {this.grid && this.grid.map((item, index) =>
             <div key={index} >
               {item}
@@ -75,7 +75,8 @@ class FlipLayout extends React.Component {
 }
 
 FlipLayout.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  loadMore: PropTypes.any
 }
 
 export default withStyles(styles)(FlipLayout)

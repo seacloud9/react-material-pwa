@@ -11,8 +11,7 @@ import MaterialNavBar from '../components/MaterialNavBar'
 class WordpressFlipContainer extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = props
-    this.page = 0
+    this.state = {...props, page: 1}
   }
 
   componentDidMount () {
@@ -29,15 +28,15 @@ class WordpressFlipContainer extends React.PureComponent {
     this.setState(newProps)
   }
 
-  onChange () {
-
+  loadMore = () => {
+    this.setState({page: ++this.state.page}, () => this.props.wpPageRequested({pageNumber: this.state.page}))
   }
 
   render () {
     return (
       <div>
         <MaterialNavBar />
-        <FlipLayout posts={this.state.posts} key={0} />
+        <FlipLayout posts={this.state.posts} key={0} loadMore={this.loadMore} />
       </div>
     )
   }
