@@ -1,6 +1,7 @@
 import 'babel-polyfill'
 // import devToolsEnhancer from 'remote-redux-devtools'
 import WordpressContainer from './containers/WordpressContainer'
+// import WordpressFlipContainer from './containers/WordpressFlipContainer'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import createHistory from 'history/createBrowserHistory'
