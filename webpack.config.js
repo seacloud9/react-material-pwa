@@ -9,6 +9,7 @@ const WebpackAssetsManifest = require('webpack-assets-manifest')
 
 
 module.exports = {
+    mode: 'development', 
     context: __dirname + '/src',
 
     plugins: [
@@ -50,13 +51,14 @@ module.exports = {
     module: {
         rules: [{
             test: /\.js$/,
+            exclude: /node_modules/,
             use: [{
               loader: 'babel-loader',
                 options: {
-                    presets: ["es2015", "react", "stage-2"]
+                    presets: ["es2015", "stage-2", "stage-3", "react"],
+                    plugins: ["transform-object-rest-spread"]
                 },
             }],
-            exclude: /node_modules/
         }, {
             test: /\.js$/,
             use: ['react-hot-loader/webpack'],

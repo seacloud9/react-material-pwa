@@ -3,10 +3,10 @@
  */
 import React from 'react'
 import { connect } from 'react-redux'
-import WordpressActions from '../reducers/wordpress'
+import { WordpressRedux } from 'wp-react-core'
 import FlipLayout from '../components/FlipLayout'
 import MaterialNavBar from '../components/MaterialNavBar'
-// import uuidv4 from 'uuid/v4'
+const { WordpressActions } = WordpressRedux
 
 class WordpressFlipContainer extends React.PureComponent {
   constructor (props) {

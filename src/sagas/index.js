@@ -1,6 +1,7 @@
 import { takeLatest } from 'redux-saga/effects'
-import {wpFetchAll, wpFetchSlug, wpFetchPage} from './wordpress'
-import { WordpressTypes } from '../reducers/wordpress'
+import { WordpressSaga, WordpressRedux } from 'wp-react-core'
+const { wpFetchAll, wpFetchSlug, wpFetchPage } = WordpressSaga
+const { WordpressTypes } = WordpressRedux
 
 function * appSagas () {
   yield [

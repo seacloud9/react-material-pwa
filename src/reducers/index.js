@@ -3,9 +3,10 @@
  */
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
+import { WordpressRedux } from 'wp-react-core'
 const mainApp = combineReducers({
   router: routerReducer,
-  wp: require('./wordpress').reducer
+  wp: WordpressRedux.reducer
 })
 
 export default mainApp

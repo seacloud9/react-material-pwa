@@ -3,11 +3,11 @@
  */
 import React from 'react'
 import { connect } from 'react-redux'
-import WordpressActions from '../reducers/wordpress'
+import { WordpressRedux } from 'wp-react-core'
 import GridLayout from '../components/GridLayout'
 import MaterialNavBar from '../components/MaterialNavBar'
 import InfiniteScroll from 'react-infinite-scroller'
-// import uuidv4 from 'uuid/v4'
+const { WordpressActions } = WordpressRedux
 
 class WordpressContainer extends React.PureComponent {
   constructor (props) {
